@@ -1,6 +1,8 @@
 <?php defined('SYSPATH') OR die('No direct access allowed.');
 
-require_once dirname(__file__) . '/vendor/swift_required.php';
+require_once SWIFT_MOD_PATH .
+    DIRECTORY_SEPARATOR . 'vendor' .
+    DIRECTORY_SEPARATOR . 'swift_required.php';
 
 abstract class Mail_Core {
 	
