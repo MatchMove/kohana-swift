@@ -4,7 +4,7 @@ abstract class Mail_Message_Core extends Swift_Message {
 	
 	public function load_config($config = array())
 	{
-		$config = arr::merge(Kohana::$config->load('swiftmail')->as_array(), $config);
+		$config = arr::merge(Kohana::$config->load(Mail::CONFIG)->as_array(), $config);
 		
 		$this->setFrom($config['from']['email'], $config['from']['name']);
 		
