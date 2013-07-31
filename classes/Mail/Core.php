@@ -7,10 +7,31 @@ require_once SWIFT_MOD_PATH .
 abstract class Mail_Core {
 	
     const CONFIG = 'swift';
+    const CONFIG_GROUP = 'default';
+    
     const CLASS_DRIVER_NS = 'Mail_Transport_Driver_';
     
+    protected static $_config = array();
 	protected static $_instance;
 	
+    /**
+     * Load configuration file.
+     *
+     * @param   string  $group configuration group
+     * @return  object
+     */
+    public static function config($group = null)
+    {
+        if (empty(self::$config))
+        {
+            self::$config = Kohana::$config->load(self::CONFIG)->as_array();
+        }
+        
+        return empty($group) || empty(self::$config[$group])
+            ? self::$config[self::CONFIG_GROUP]
+            : self::$config[$group];
+    }
+    
    /**
 	 * Create a transport layer to send a messsage.
 	 *
@@ -22,14 +43,10 @@ abstract class Mail_Core {
 	public static function factory($type = Mail_Transport_Type::SMTP, $from_config = array())
 	{
 		
-        if (empty($from_config))
+        // Load default config or a specifig group
+        if (empty($from_config) || is_string($from_config))
         {
-            $config = Kohana::$config->load(self::CONFIG)->as_array();
-        }
-        
-        if (is_string($from_config))
-        {
-            $config = Kohana::$config->load($from_config)->as_array();
+            $config = self::config($from_config);
         }
         
 		if(!empty($from_config) && is_array($from_config))
