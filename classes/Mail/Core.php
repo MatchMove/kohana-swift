@@ -11,7 +11,7 @@ abstract class Mail_Core {
     
     const CLASS_DRIVER_NS = 'Mail_Transport_Driver_';
     
-    protected static $_config = array();
+    protected static $config = array();
 	protected static $_instance;
 	
     /**
