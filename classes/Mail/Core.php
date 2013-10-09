@@ -2,6 +2,8 @@
 
 require_once SWIFT_MOD_PATH .
     DIRECTORY_SEPARATOR . 'vendor' .
+    DIRECTORY_SEPARATOR . 'swift' .
+    DIRECTORY_SEPARATOR . 'lib' .
     DIRECTORY_SEPARATOR . 'swift_required.php';
 
 abstract class Mail_Core {

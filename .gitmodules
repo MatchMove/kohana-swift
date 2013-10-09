@@ -1,0 +1,4 @@
+[submodule "vendor/swift"]
+	path = vendor/swift
+	url = https://github.com/swiftmailer/swiftmailer.git
+	branch = master
