@@ -53,6 +53,8 @@ abstract class Mail_Core {
         
 		if(!empty($from_config) && is_array($from_config))
 		{
+            $config = self::config();
+            
             if(!empty($from_config['email']))
             {
                 $config['message']['from']['email'] = $from_config['email'];
