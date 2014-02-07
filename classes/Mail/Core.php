@@ -146,7 +146,7 @@ abstract class Mail_Core {
 		}
         catch(Exception $e)
 		{
-			// var_dump($e->getMessage());
+			error_log('[' . $e->getFile() . ':' . $e->getLine() . '] ' . $e->getMessage());
 		}
 	}
 	
